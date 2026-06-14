@@ -1,0 +1,8 @@
+{
+  "name": "كابتن المونديال 2026",
+  "description": "منصة تفاعلية رائدة لتوقع مسار كأس العالم 2026 بالكامل، من دور المجموعات حتى أدوار الإقصاء النهائية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

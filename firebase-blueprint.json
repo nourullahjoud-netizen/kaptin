@@ -1,0 +1,47 @@
+{
+  "entities": {
+    "predictions": {
+      "title": "User Prediction",
+      "description": "User published tournament prediction data.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Unique user ID or local device ID." },
+        "userName": { "type": "string", "description": "User profile name." },
+        "favoriteTeamName": { "type": "string", "description": "Name of favorite team." },
+        "favoriteTeamCode": { "type": "string", "description": "Flag/jersey code." },
+        "championName": { "type": "string", "description": "Predicted champion." },
+        "groupPredictions": { "type": "object", "description": "Flattened match predictions." },
+        "knockoutWinnerNames": { "type": "object", "description": "Names of winners at each phase." },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "score": { "type": "number", "description": "Points score computed for the prediction." }
+      },
+      "required": ["userId", "userName", "favoriteTeamName", "publishedAt"]
+    },
+    "rooms": {
+      "title": "Compete Room",
+      "description": "A public or restricted room for group predictions competing.",
+      "type": "object",
+      "properties": {
+        "roomId": { "type": "string", "description": "Unique key for the room." },
+        "name": { "type": "string", "description": "Display name of the room." },
+        "createdBy": { "type": "string", "description": "Target creator user ID." },
+        "isPrivate": { "type": "boolean", "description": "Whether a password is required." },
+        "password": { "type": "string", "description": "Optional room entry pin." },
+        "memberCount": { "type": "number", "description": "Total active members count." },
+        "members": { "type": "array", "description": "Listing of user profile records in the room." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["roomId", "name", "createdBy", "isPrivate"]
+    }
+  },
+  "firestore": {
+    "predictions/{predictionId}": {
+      "schema": "predictions",
+      "description": "Public and peer published predictions."
+    },
+    "rooms/{roomId}": {
+      "schema": "rooms",
+      "description": "Public and private user tournament groups."
+    }
+  }
+}
